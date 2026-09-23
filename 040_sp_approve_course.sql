@@ -1,8 +1,4 @@
 
-
-SET QUOTED_IDENTIFIER ON;
-GO
-
 CREATE OR ALTER PROCEDURE dbo.sp_ApproveCourse
     @review_id   INT,
     @reviewer_id INT,
@@ -60,4 +56,3 @@ BEGIN
         THROW;
     END CATCH
 END
-GO

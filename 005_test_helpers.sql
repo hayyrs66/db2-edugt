@@ -5,7 +5,6 @@ AS
 BEGIN
     PRINT CONCAT('PASS: ', @test_name);
 END
-GO
 
 CREATE OR ALTER PROCEDURE dbo.test_fail
     @test_name VARCHAR(200),
@@ -16,7 +15,6 @@ BEGIN
         CONCAT('FAIL: ', @test_name, CASE WHEN @detail IS NOT NULL THEN CONCAT(' -- ', @detail) ELSE '' END);
     RAISERROR('%s', 16, 1, @msg);
 END
-GO
 
 CREATE OR ALTER PROCEDURE dbo.test_expect_error
     @test_name      VARCHAR(200),
@@ -33,4 +31,3 @@ BEGIN
         EXEC dbo.test_fail @test_name, @detail = @mismatch_detail;
     END
 END
-GO

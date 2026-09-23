@@ -1,5 +1,3 @@
-SET QUOTED_IDENTIFIER ON;
-GO
 
 CREATE OR ALTER PROCEDURE dbo.sp_ResubmitCourseForReview
     @course_id     INT,
@@ -22,4 +20,3 @@ BEGIN
     IF @@ROWCOUNT = 0
         THROW 54003, 'El curso ya no esta en estado rejected (fue modificado por otra sesion).', 1;
 END
-GO

@@ -9,9 +9,6 @@
 -- Todos validan que quien ejecuta la accion tenga rol 'admin', porque el
 -- enunciado atribuye estas configuraciones exclusivamente al administrador.
 
-SET QUOTED_IDENTIFIER ON;
-GO
-
 -- 1. sp_SetCategoryCommission
 -- Actualiza el porcentaje de comisión de la plataforma para una categoria.
 -- categories.platform_commission es un valor unico por categoria, por lo que
@@ -39,7 +36,6 @@ BEGIN
         SET platform_commission = @commission_percent
     WHERE id = @category_id;
 END
-GO
 
 -- 2. sp_SetInstructorCommission
 -- Registra una comisión preferencial para un instructor (override de la
@@ -99,7 +95,6 @@ BEGIN
         THROW;
     END CATCH
 END
-GO
 
 -- 3. sp_CreateCohort
 -- Crea una cohorte (edicion en vivo) para un curso, con fecha de inicio,
@@ -134,7 +129,6 @@ BEGIN
 
     SET @new_cohort_id = SCOPE_IDENTITY();
 END
-GO
 
 -- 4. sp_SetRefundPolicy
 -- Establece la política de reembolso vigente de la plataforma. La política es
@@ -191,7 +185,6 @@ BEGIN
         THROW;
     END CATCH
 END
-GO
 
 -- 5. sp_SetCourseFeatured
 -- Destaca o quita de destacados un curso en la portada (courses.featured).
@@ -219,4 +212,3 @@ BEGIN
         SET featured = @featured
     WHERE id = @course_id;
 END
-GO
